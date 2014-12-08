@@ -15,9 +15,11 @@ package
 		public var LeftKey:int = 37;
 		public var RightKey:int = 39;
 		
+		public var MouseMoveArea:Number = 0.1;
+		
 		public var MoveSpeed:Number = 20;
-		public var Acceleration:Number = 1;
-		public var BreakSpeed:Number = 2;
+		public var Acceleration:Number = 0.8;
+		public var BreakSpeed:Number = 1;
 		
 		public var MinX:int = -100;
 		public var MaxX:int = 0;
@@ -41,15 +43,17 @@ package
 		
 		public function update(e:Event = null):void 
 		{
+			var screenMouseX:int = _game.mouseX + _game.x;
+			
 			// Movement
-			if (Input.keyDown(RightKey))
+			if (Input.keyDown(LeftKey) || screenMouseX < Main.WIDTH * MouseMoveArea)
 			{
 				// Accelerate
 				if (_velo.x > -MoveSpeed) _velo.x -= Acceleration;
 				// Hold
 				else if (_velo.x < -MoveSpeed) _velo.x = -MoveSpeed;
 			}
-			else if (Input.keyDown(LeftKey))
+			else if (Input.keyDown(RightKey) || screenMouseX > Main.WIDTH * (1 - MouseMoveArea))
 			{
 				// Accelerate
 				if (_velo.x < MoveSpeed) _velo.x += Acceleration;
@@ -67,20 +71,20 @@ package
 				_velo.x = 0;
 			}
 			
-			// Apply Velo
-			_pos = _pos.add(_velo);
-			
 			// Bound Position
-			if (_pos.x < MinX)
+			if (_pos.x + _velo.x < MinX)
 			{
 				_pos.x = MinX;
 				_velo.x = 0;
 			}
-			if (_pos.x > MaxX)
+			if (_pos.x + _velo.x > MaxX)
 			{
 				_pos.x = MaxX;
 				_velo.x = 0;
 			}
+			
+			// Apply Velo
+			_pos = _pos.add(_velo);
 			
 			// Apply position
 			_game.x = -_pos.x;

@@ -3,7 +3,6 @@ package Levels
 	import Factories.BuildingFactory;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import GameObjects.Buidings.Building;
 	import GameObjects.GameObj;
 	import Tools.Input;
 	
@@ -24,7 +23,6 @@ package Levels
 		protected var _started:Boolean = false;
 		protected var _engine:Engine;
 		protected var _buildingFactory:BuildingFactory;
-		protected var _castle:Building;
 		protected var _camera:Camera;
 		
 		// -- Construct -- //

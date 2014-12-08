@@ -1,5 +1,6 @@
 package Factories 
 {
+	import GameObjects.Buidings.BarrackTower;
 	import GameObjects.Buidings.Building;
 	/**
 	 * ...
@@ -10,8 +11,8 @@ package Factories
 		// -- Types -- //
 		
 		public static const CASTLE:int = 0;
-		public static const TOWER_SHOOT:int = 1;
-		public static const TOWER_SPAWN:int = 2;
+		public static const TOWER_SPAWN:int = 1;
+		public static const TOWER_SHOOT:int = 2;
 		public static const TOWER_BLOCK:int = 3;
 		
 		// -- Methods -- //
@@ -24,6 +25,9 @@ package Factories
 			{
 				case CASTLE:
 					newBuilding = new Building(new TempArt_Castle1(), 1000);
+				break;
+				case TOWER_SPAWN:
+					newBuilding = new BarrackTower();
 				break;
 				default:
 					return null;

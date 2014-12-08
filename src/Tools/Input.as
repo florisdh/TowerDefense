@@ -9,6 +9,8 @@ package Tools
 	 */
 	public class Input 
 	{
+		// -- Events -- //
+		
 		// -- Vars -- //
 		
 		private static var _keysDown:Dictionary;

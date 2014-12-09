@@ -12,6 +12,10 @@ package GameObjects
 	 */
 	public class GameObj extends Sprite
 	{
+		// -- Events -- //
+		
+		public static const DESTROYED:String = "Destroyed";
+		
 		// -- Properties -- //
 		
 		public var Collide:Boolean = true;
@@ -38,12 +42,14 @@ package GameObjects
 			}
 		}
 		
-		public function destroy():void 
+		public function destroy(e:Event = null):void 
 		{
 			if (_destroyed) return;
 			_destroyed = true;
 			
 			if (ParentEngine) ParentEngine.removeObject(this);
+			
+			dispatchEvent(new Event(DESTROYED));
 		}
 		
 		// -- Methods -- //

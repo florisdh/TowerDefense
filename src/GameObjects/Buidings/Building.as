@@ -1,6 +1,7 @@
 package GameObjects.Buidings {
 	import flash.display.MovieClip;
 	import GameObjects.GameObj;
+	import UI.InGame.HealthBar;
 	
 	/**
 	 * ...
@@ -14,12 +15,19 @@ package GameObjects.Buidings {
 		
 		// -- Vars -- //
 		
+		protected var _healthBar:HealthBar;
+		
 		// -- Construct -- //
 		
 		public function Building(art:MovieClip, health:Number) 
 		{
 			super(art);
+			
 			Human = new Humanoid(health);
+			
+			_healthBar = new HealthBar(Human);
+			_healthBar.y = -height;
+			addChild(_healthBar);
 		}
 		
 		// -- Methods -- //

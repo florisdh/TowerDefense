@@ -1,9 +1,9 @@
-package GameObjects 
-{
+package GameObjects.Buidings {
 	import Factories.BuildingFactory;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import GameObjects.Buidings.Tower;
+	import GameObjects.GameObj;
 	import UI.InGame.TowerSpawnMenu;
 	/**
 	 * ...
@@ -38,9 +38,13 @@ package GameObjects
 		
 		private function createTower(e:Event):void 
 		{
+			// Create Tower
 			var towerInd:int = _spawnMenu.SelectedTowerIndex + 1;
 			var newTower:Tower = _buildingFactory.create(towerInd, ParentEngine);
 			newTower.Position = Position;
+			newTower.start();
+			
+			// Remove Self
 			destroy();
 		}
 		

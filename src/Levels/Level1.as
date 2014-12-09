@@ -4,7 +4,9 @@ package Levels
 	import flash.display.MovieClip;
 	import flash.geom.Vector3D;
 	import GameObjects.Buidings.Building;
-	import GameObjects.TowerBase;
+	import GameObjects.Units.Enemies.Enemy;
+	import GameObjects.Units.Enemies.Enemy_Club;
+	import GameObjects.Buidings.TowerBase;
 	/**
 	 * ...
 	 * @author FDH
@@ -47,6 +49,15 @@ package Levels
 				newBase.x = _castle.x - i * 650;
 				newBase.y = _castle.y;
 				_engine.addObject(newBase);
+			}
+			
+			// Add Enemies
+			for (var j:int = 0; j < 3; j++) 
+			{
+				var newEnemy:Enemy = new Enemy_Club();
+				newEnemy.x = 30 + j * (newEnemy.width + 10);
+				newEnemy.y = _castle.y;
+				_engine.addObject(newEnemy);
 			}
 			
 			// Move Camera

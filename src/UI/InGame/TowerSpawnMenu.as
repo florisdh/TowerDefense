@@ -45,7 +45,8 @@ package UI.InGame
 			var arrInd:int = _spriteButtons.indexOf(e.target);
 			_selectedTowerIndex = arrInd;
 			
-			dispatchEvent(new Event(SECLECTED_TOWER));
+			if (_selectedTowerIndex != -1)
+				dispatchEvent(new Event(SECLECTED_TOWER));
 		}
 		
 		// -- Get & Set -- //

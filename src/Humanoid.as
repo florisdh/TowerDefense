@@ -38,7 +38,11 @@ package
 			Health -= dmg;
 			
 			// Dispatch die event after health change event
-			if (!Died && _health <= 0) dispatchEvent(new Event(DIED));
+			if (!Died && _health <= 0)
+			{
+				Died = true;
+				dispatchEvent(new Event(DIED));
+			}
 		}
 		
 		public function heal(amt:Number):void 

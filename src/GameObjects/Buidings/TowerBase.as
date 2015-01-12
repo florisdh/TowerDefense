@@ -9,6 +9,7 @@ package GameObjects.Buidings {
 	 * ...
 	 * @author FDH
 	 */
+	//public class TowerBase extends Building
 	public class TowerBase extends GameObj
 	{
 		// -- Properties -- //
@@ -23,12 +24,14 @@ package GameObjects.Buidings {
 		
 		public function TowerBase()
 		{
-			addChild(new TempArt_TowerBase());
+			super(new Tower_Building());
+			
+			Collide = false;
 			
 			_buildingFactory = new BuildingFactory();
 			
 			_spawnMenu = new TowerSpawnMenu();
-			_spawnMenu.y = -height - 10;
+			_spawnMenu.y = -50;
 			_spawnMenu.addEventListener(TowerSpawnMenu.SECLECTED_TOWER, createTower);
 			
 			addEventListener(MouseEvent.CLICK, onMouseClick);
@@ -36,10 +39,28 @@ package GameObjects.Buidings {
 		
 		// -- Methods -- //
 		
+		override public function update(e:Event = null):void 
+		{
+			super.update(e);
+			
+			// Animation
+			var currentFrame:int = _art.currentFrame;
+			if (_menuOpen)
+			{
+				// Play normal anim
+				if (currentFrame < 31) _art.gotoAndPlay(31);
+			}
+			else
+			{
+				// Play hammer anim
+				if (currentFrame > 30) _art.gotoAndPlay(0);
+			}
+		}
+		
 		private function createTower(e:Event):void 
 		{
 			// Create Tower
-			var towerInd:int = _spawnMenu.SelectedTowerIndex + 1;
+			var towerInd:int = _spawnMenu.SelectedTowerIndex + 2;
 			var newTower:Tower = _buildingFactory.create(towerInd, ParentEngine);
 			newTower.Position = Position;
 			newTower.start();

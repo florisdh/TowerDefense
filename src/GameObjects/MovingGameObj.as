@@ -38,6 +38,9 @@ package GameObjects
 		
 		override public function update(e:Event = null):void 
 		{
+			if (!_started) return;
+			super.update();
+			
 			Position = Position.add(_velocity);
 		}
 		

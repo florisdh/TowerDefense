@@ -29,11 +29,11 @@ package GameObjects.Buidings
 		
 		public function BarrackTower() 
 		{
-			super(new TempArt_Tower1(), 300);
+			super(new Barracks_3(), 300);
 			
 			_minions = new Vector.<Minion>();
 			_unitFactory = new UnitFactory();
-			_spawnTimer = new Timer(2000, 1);
+			_spawnTimer = new Timer(4000, 1);
 			_spawnTimer.addEventListener(TimerEvent.TIMER, onSpawnTick);
 		}
 		
@@ -60,6 +60,7 @@ package GameObjects.Buidings
 		
 		private function checkForRespawn():void 
 		{
+			if (_destroyed) return;
 			if (!_spawnTimer.running && _minions.length < MaxMinions)
 			{
 				_spawnTimer.reset();

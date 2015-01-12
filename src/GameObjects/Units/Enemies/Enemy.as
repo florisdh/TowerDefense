@@ -3,6 +3,7 @@ package GameObjects.Units.Enemies {
 	import flash.events.Event;
 	import flash.geom.Vector3D;
 	import GameObjects.Buidings.Building;
+	import GameObjects.Buidings.Tower;
 	import GameObjects.GameObj;
 	import GameObjects.MovingGameObj;
 	import GameObjects.Units.Minion;
@@ -22,8 +23,13 @@ package GameObjects.Units.Enemies {
 		
 		public function Enemy(art:MovieClip, health:Number)
 		{
+			MoveDir = 1;
 			super(art, health);
-			_velocity = new Vector3D(4, 0);
+			
+			// Attack types
+			_attackTypes.push(Minion);
+			_attackTypes.push(Tower);
+			
 		}
 		
 		// -- Methods -- //

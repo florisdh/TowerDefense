@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'9-12-2014'</value>
+      <value>'12-1-2015'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -36,7 +36,19 @@
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\TempArt.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_OrcKnuppelman.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Knight.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Temp\TempArt.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\grastiles.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Tower_Building.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_OrcSwordman.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Barracks_1.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Barracks_3.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Barracks_2.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Beastrider.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Goblin.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_EliteGoblin.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Tower_Ranged_1.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>

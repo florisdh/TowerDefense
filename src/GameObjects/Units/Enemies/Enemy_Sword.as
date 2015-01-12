@@ -1,16 +1,12 @@
-package GameObjects.Units.Enemies {
-	import flash.display.MovieClip;
-	import flash.events.Event;
-	import flash.geom.ColorTransform;
+package GameObjects.Units.Enemies 
+{
 	import GameObjects.Buidings.Tower;
-	import GameObjects.GameObj;
 	import GameObjects.Units.Minion;
-	
 	/**
 	 * ...
 	 * @author FDH
 	 */
-	public class Enemy_Club extends Enemy 
+	public class Enemy_Sword extends Enemy
 	{
 		// -- Properties -- //
 		
@@ -18,11 +14,15 @@ package GameObjects.Units.Enemies {
 		
 		// -- Construct -- //
 		
-		public function Enemy_Club() 
+		public function Enemy_Sword() 
 		{
-			super(new Art_Orcknuppelman(), 100);
-			AttackDamage = 5;
-			AttackInterval = 1000;
+			super(new Art_OrcSwordman(), 100);
+			AttackDamage = 10;
+			AttackInterval = 1250;
+			
+			// Attack types
+			_attackTypes.push(Minion);
+			_attackTypes.push(Tower);
 			
 			// Anim frames
 			_anim_walk_begin = 0;

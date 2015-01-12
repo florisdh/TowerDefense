@@ -20,16 +20,15 @@ package GameObjects
 		
 		public var Collide:Boolean = true;
 		public var ParentEngine:Engine;
-		public var AutoStart:Boolean = true;
+		public var AutoStart:Boolean = false;
 
 		// -- Vars -- //
 		
 		protected var _art:MovieClip;
+		
 		protected var _started:Boolean = false;
 		protected var _destroyed:Boolean = false;
-		
 		protected var _position:Vector3D = new Vector3D();
-		
 		
 		// -- Construct -- //
 		
@@ -47,8 +46,8 @@ package GameObjects
 			if (_destroyed) return;
 			_destroyed = true;
 			
+			stop();
 			if (ParentEngine) ParentEngine.removeObject(this);
-			
 			dispatchEvent(new Event(DESTROYED));
 		}
 		
@@ -56,6 +55,7 @@ package GameObjects
 		
 		public function update(e:Event = null):void 
 		{
+			
 		}
 		
 		public function willCollide(other:GameObj):Boolean

@@ -52,7 +52,19 @@
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
-    <element path="art\TempArt.swc" />
+    <element path="art\Art_OrcKnuppelman.swc" />
+    <element path="art\Art_Knight.swc" />
+    <element path="art\Temp\TempArt.swc" />
+    <element path="art\grastiles.swc" />
+    <element path="art\Tower_Building.swc" />
+    <element path="art\Art_OrcSwordman.swc" />
+    <element path="art\Barracks_1.swc" />
+    <element path="art\Barracks_3.swc" />
+    <element path="art\Barracks_2.swc" />
+    <element path="art\Art_Beastrider.swc" />
+    <element path="art\Art_Goblin.swc" />
+    <element path="art\Art_EliteGoblin.swc" />
+    <element path="art\Art_Tower_Ranged_1.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

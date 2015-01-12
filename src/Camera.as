@@ -36,7 +36,7 @@ package
 		{
 			_game = rootObject;
 			_velo = new Vector3D();
-			_pos = new Vector3D(rootObject.x, rootObject.y);
+			_pos = new Vector3D(0, 0);
 		}
 		
 		// -- Methods -- //
@@ -46,14 +46,14 @@ package
 			var screenMouseX:int = _game.mouseX + _game.x;
 			
 			// Movement
-			if (Input.keyDown(LeftKey) || screenMouseX < Main.WIDTH * MouseMoveArea)
+			if (Input.keyDown(LeftKey) || screenMouseX < Main.WINDOW_WIDTH * MouseMoveArea)
 			{
 				// Accelerate
 				if (_velo.x > -MoveSpeed) _velo.x -= Acceleration;
 				// Hold
 				else if (_velo.x < -MoveSpeed) _velo.x = -MoveSpeed;
 			}
-			else if (Input.keyDown(RightKey) || screenMouseX > Main.WIDTH * (1 - MouseMoveArea))
+			else if (Input.keyDown(RightKey) || screenMouseX > Main.WINDOW_WIDTH * (1 - MouseMoveArea))
 			{
 				// Accelerate
 				if (_velo.x < MoveSpeed) _velo.x += Acceleration;
@@ -77,7 +77,7 @@ package
 				_pos.x = MinX;
 				_velo.x = 0;
 			}
-			if (_pos.x + _velo.x > MaxX)
+			else if (_pos.x + _velo.x > MaxX)
 			{
 				_pos.x = MaxX;
 				_velo.x = 0;

@@ -26,7 +26,7 @@ package GameObjects.Buidings {
 			Human = new Humanoid(health);
 			
 			_healthBar = new HealthBar(Human);
-			_healthBar.y = -height;
+			_healthBar.y = -height - _healthBar.height / 2;
 			addChild(_healthBar);
 		}
 		

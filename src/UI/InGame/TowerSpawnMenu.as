@@ -34,6 +34,7 @@ package UI.InGame
 			addChild(_bg);
 			
 			addSpriteButton(new TempArt_Tower1_Icon(), -width / 4, -height / 6 * 5);
+			addSpriteButton(new TempArt_Tower1_Icon(), width / 4, -height / 6 * 5);
 			
 			addEventListener(MouseEvent.CLICK, onButtonClick);
 		}

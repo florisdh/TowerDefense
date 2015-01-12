@@ -17,8 +17,8 @@ package
 		// -- Statics -- //
 		
 		// For those who want to know the size and are not added yet.
-		public static var WIDTH:int;
-		public static var HEIGHT:int;
+		public static var WINDOW_WIDTH:int;
+		public static var WINDOW_HEIGHT:int;
 		
 		// -- Properties -- //
 		
@@ -42,8 +42,8 @@ package
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
 			
-			WIDTH = stage.stageWidth;
-			HEIGHT = stage.stageHeight;
+			WINDOW_WIDTH = stage.stageWidth;
+			WINDOW_HEIGHT = stage.stageHeight;
 			
 			Input.setStage(stage);
 			
@@ -61,14 +61,12 @@ package
 		private function onSucceed(e:Event):void 
 		{
 			stop();
-			trace("succ");
 			showStartMenu();
 		}
 		
 		private function onFailed(e:Event):void 
 		{
 			stop();
-			trace("failed");
 			showStartMenu();
 		}
 		

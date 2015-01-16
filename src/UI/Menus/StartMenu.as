@@ -2,6 +2,8 @@ package UI.Menus
 {
 	import flash.display.SimpleButton;
 	import flash.events.Event;
+	import flash.events.KeyboardEvent;
+	import Tools.Input;
 
 	/**
 	 * ...
@@ -14,7 +16,6 @@ package UI.Menus
 		public static const START:String = "Start";
 		
 		// -- Vars -- //
-		private var _startButton:SimpleButton;
 		
 		// -- Construct -- //
 		
@@ -22,9 +23,17 @@ package UI.Menus
 		{
 			super();
 			
-			addChild(new TempArt_MainMenuBG());
-			addButton(new TempArt_StartButton(), 250, 350, START);
-			
+			addChild(new Art_Startscherm());
+			addEventListener(Event.ENTER_FRAME, update);
+		}
+		
+		private function update(e:Event):void 
+		{
+			if (Input.keyDown(13))
+			{
+				removeEventListener(Event.ENTER_FRAME, update);
+				dispatchEvent(new Event(START));
+			}
 		}
 	}
 

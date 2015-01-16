@@ -52,19 +52,35 @@
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
-    <element path="art\Art_OrcKnuppelman.swc" />
-    <element path="art\Art_Knight.swc" />
     <element path="art\Temp\TempArt.swc" />
     <element path="art\grastiles.swc" />
-    <element path="art\Tower_Building.swc" />
-    <element path="art\Art_OrcSwordman.swc" />
-    <element path="art\Barracks_1.swc" />
-    <element path="art\Barracks_3.swc" />
-    <element path="art\Barracks_2.swc" />
     <element path="art\Art_Beastrider.swc" />
-    <element path="art\Art_Goblin.swc" />
-    <element path="art\Art_EliteGoblin.swc" />
     <element path="art\Art_Tower_Ranged_1.swc" />
+    <element path="art\BG1.swc" />
+    <element path="art\Art_Crossbow.swc" />
+    <element path="art\Art_Tower_Ranged_2.swc" />
+    <element path="art\Art_Tower_Balista.swc" />
+    <element path="art\Art_Startscherm.swc" />
+    <element path="art\Art_Tower_Ranged_3.swc" />
+    <element path="art\Art_Tower_Cannon.swc" />
+    <element path="art\Art_King.swc" />
+    <element path="art\KIP.swc" />
+    <element path="art\Art_EliteGoblin.swc" />
+    <element path="art\Art_Goblin.swc" />
+    <element path="art\Art_Ogre.swc" />
+    <element path="art\Art_Orcknuppelman.swc" />
+    <element path="art\Art_OrcSwordman.swc" />
+    <element path="art\EI.swc" />
+    <element path="art\Art_FarmerKnightPaladin.swc" />
+    <element path="art\Audio_Audiofiles.swc" />
+    <element path="art\Art_UI.swc" />
+    <element path="art\Art_Eindscherm.swc" />
+    <element path="art\Art_Archery.swc" />
+    <element path="art\Art_Castle.swc" />
+    <element path="art\Art_Walls.swc" />
+    <element path="art\Art_Buildplatvorm.swc" />
+    <element path="art\Art_Barracks.swc" />
+    <element path="art\Art_Archers.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

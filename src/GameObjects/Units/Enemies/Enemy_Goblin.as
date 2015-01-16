@@ -28,7 +28,7 @@ package GameObjects.Units.Enemies
 			_anim_death_begin = 125;
 			_anim_death_end = 167;
 			
-			_attackRange = 100;
+			_attackRange = 30;
 		}
 		
 		// -- Methods -- //

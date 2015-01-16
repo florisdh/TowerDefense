@@ -3,10 +3,12 @@ package GameObjects.Units.Enemies {
 	import flash.events.Event;
 	import flash.geom.Vector3D;
 	import GameObjects.Buidings.Building;
+	import GameObjects.Buidings.Castle;
 	import GameObjects.Buidings.Tower;
 	import GameObjects.GameObj;
 	import GameObjects.MovingGameObj;
-	import GameObjects.Units.Minion;
+	import GameObjects.Projectiles.Projectile;
+	import GameObjects.Units.Allies.Ally;
 	import GameObjects.Units.Unit;
 	
 	/**
@@ -17,6 +19,8 @@ package GameObjects.Units.Enemies {
 	{
 		// -- Properties -- //
 		
+		public var Loot:int = 10;
+		
 		// -- Vars -- //
 		
 		// -- Construct -- //
@@ -26,20 +30,27 @@ package GameObjects.Units.Enemies {
 			MoveDir = 1;
 			super(art, health);
 			
-			// Attack types
-			_attackTypes.push(Minion);
-			_attackTypes.push(Tower);
+			Human.addEventListener(Humanoid.DIED, onDied);
 			
+			// Attack types
+			_attackTypes.push(Ally);
+			_attackTypes.push(Tower);
+			_attackTypes.push(Castle);
 		}
 		
 		// -- Methods -- //
 		
 		override public function onCollide(other:GameObj):void 
 		{
-			if (other is Building || other is Minion)
+			if (other is Building || other is Ally)
 			{
 				super.onCollide(other);
 			}
+		}
+		
+		private function onDied(e:Event):void 
+		{
+			UserStats.Money += Loot;
 		}
 		
 		// -- Get & Set -- //

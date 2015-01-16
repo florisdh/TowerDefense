@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'12-1-2015'</value>
+      <value>'16-1-2015'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -36,19 +36,35 @@
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_OrcKnuppelman.swc</path-element>
-      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Knight.swc</path-element>
       <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Temp\TempArt.swc</path-element>
       <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\grastiles.swc</path-element>
-      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Tower_Building.swc</path-element>
-      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_OrcSwordman.swc</path-element>
-      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Barracks_1.swc</path-element>
-      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Barracks_3.swc</path-element>
-      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Barracks_2.swc</path-element>
       <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Beastrider.swc</path-element>
-      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Goblin.swc</path-element>
-      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_EliteGoblin.swc</path-element>
       <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Tower_Ranged_1.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\BG1.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Crossbow.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Tower_Ranged_2.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Tower_Balista.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Startscherm.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Tower_Ranged_3.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Tower_Cannon.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_King.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\KIP.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_EliteGoblin.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Goblin.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Ogre.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Orcknuppelman.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_OrcSwordman.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\EI.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_FarmerKnightPaladin.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Audio_Audiofiles.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_UI.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Eindscherm.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Archery.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Castle.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Walls.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Buildplatvorm.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Barracks.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Archers.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>

@@ -59,6 +59,7 @@ package GameObjects.Units {
 			
 			Human = new Humanoid(health); 
 			Human.addEventListener(Humanoid.CHANGED, onHit);
+			Human.addEventListener(Humanoid.DIED, onDied);
 			
 			_healthBar = new HealthBar(Human);
 			_healthBar.y = -height;
@@ -106,6 +107,11 @@ package GameObjects.Units {
 			_hitTimer.start();
 		}
 		
+		private function onDied(e:Event):void 
+		{
+			_velocity.scaleBy(0);
+		}
+		
 		protected function onHitDone(e:TimerEvent):void
 		{
 			// Reverse color overlay
@@ -122,7 +128,7 @@ package GameObjects.Units {
 			{
 				// Find closest target to attack
 				_closestTarget = null;
-				var closestDis:Number = -1;
+				var closestDis:Number = _attackRange;
 				var l:int = ParentEngine.Items.length;
 				for (var i:int = 0; i < l; i++) 
 				{
@@ -141,8 +147,11 @@ package GameObjects.Units {
 							// Calc dis
 							var dis:Number = Math.abs(other.x - x);
 							
+							// Remove half of other size to fix the bug: wide enemy size to the center is higher
+							dis -= other.width / 2;
+							
 							// If target is within attack range and closer than closest selected target
-							if (dis < _attackRange && (closestDis < 0 || closestDis < closestDis))
+							if (dis < closestDis)
 							{
 								closestDis = dis;
 								_closestTarget = other;
@@ -161,7 +170,7 @@ package GameObjects.Units {
 					// Attack
 					if (_canAttack) attack(_closestTarget);
 				}
-				else
+				else if (!Human.Died)
 				{
 					// Walk
 					_velocity = new Vector3D(MoveDir * MoveSpeed);

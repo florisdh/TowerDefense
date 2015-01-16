@@ -1,7 +1,10 @@
 package GameObjects.Buidings {
+	import Audio_Towerconstruction;
 	import Factories.BuildingFactory;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.media.Sound;
+	import flash.media.SoundTransform;
 	import GameObjects.Buidings.Tower;
 	import GameObjects.GameObj;
 	import UI.InGame.TowerSpawnMenu;
@@ -24,7 +27,7 @@ package GameObjects.Buidings {
 		
 		public function TowerBase()
 		{
-			super(new Tower_Building());
+			super(new Art_Buildplatvorm());
 			
 			Collide = false;
 			
@@ -60,10 +63,40 @@ package GameObjects.Buidings {
 		private function createTower(e:Event):void 
 		{
 			// Create Tower
-			var towerInd:int = _spawnMenu.SelectedTowerIndex + 2;
-			var newTower:Tower = _buildingFactory.create(towerInd, ParentEngine);
+			var towerInd:int = _spawnMenu.SelectedTowerIndex;
+			var newTower:Tower;
+			
+			switch (towerInd) 
+			{
+				case 0:
+					if (UserStats.Money < BarrackTower.MONEY_COST) return;
+					UserStats.Money -= BarrackTower.MONEY_COST;
+					newTower = _buildingFactory.create(BuildingFactory.TOWER_BARRACK, ParentEngine);
+				break;
+				case 1:
+					if (UserStats.Money < ArcheryTower.MONEY_COST) return;
+					UserStats.Money -= ArcheryTower.MONEY_COST;
+					newTower = _buildingFactory.create(BuildingFactory.TOWER_ARCHERY, ParentEngine);
+				break;
+				case 2:
+					if (UserStats.Money < RangedTower.MONEY_COST) return;
+					UserStats.Money -= RangedTower.MONEY_COST;
+					newTower = _buildingFactory.create(BuildingFactory.TOWER_SHOOT, ParentEngine);
+				break;
+				case 3:
+					if (UserStats.Money < BarricadeTower.MONEY_COST) return;
+					UserStats.Money -= BarricadeTower.MONEY_COST;
+					newTower = _buildingFactory.create(BuildingFactory.TOWER_BARRICADE, ParentEngine);
+				break;
+				default:
+			}
+			
 			newTower.Position = Position;
 			newTower.start();
+			
+			// Play sound
+			var sound:Sound = new Audio_Towerconstruction();
+			sound.play(0, 0, new SoundTransform(1));
 			
 			// Remove Self
 			destroy();

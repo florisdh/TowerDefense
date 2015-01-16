@@ -25,12 +25,10 @@ package UI.InGame
 			_human.addEventListener(Humanoid.CHANGED, onHealthChanged);
 			
 			_back = new TempArt_HealthBar_Back();
-			_back.x = -_back.width / 2;
-			_back.y = -_back.height / 2;
-			
 			_front = new TempArt_HealthBar_Top();
-			_front.x = -_front.width / 2;
-			_front.y = -_front.height / 2;
+			
+			_back.x = _front.x = -_back.width / 2;
+			_back.y = _front.y = -_back.height / 2;
 			
 			addChild(_back);
 			addChild(_front);

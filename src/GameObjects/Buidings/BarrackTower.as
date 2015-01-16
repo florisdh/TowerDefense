@@ -1,86 +1,65 @@
 package GameObjects.Buidings 
 {
 	import Factories.UnitFactory;
-	import flash.display.MovieClip;
 	import flash.events.Event;
-	import flash.events.TimerEvent;
-	import flash.utils.Timer;
-	import GameObjects.GameObj;
-	import GameObjects.Units.Minion;
-	import GameObjects.Units.Unit;
 	
 	/**
 	 * ...
 	 * @author FDH
 	 */
-	public class BarrackTower extends Tower 
+	public class BarrackTower extends SpawnTower 
 	{
 		// -- Properties -- //
 		
-		public var MaxMinions:int = 5;
-		
-		// -- Vars -- //
-		
-		private var _minions:Vector.<Minion>;
-		private var _unitFactory:UnitFactory;
-		private var _spawnTimer:Timer;
+		public static var MONEY_COST:int = 100;
+		public static var UPGRADE_COST:int = 100;
 		
 		// -- Construct -- //
 		
 		public function BarrackTower() 
 		{
-			super(new Barracks_3(), 300);
+			super(300, 8000);
 			
-			_minions = new Vector.<Minion>();
-			_unitFactory = new UnitFactory();
-			_spawnTimer = new Timer(4000, 1);
-			_spawnTimer.addEventListener(TimerEvent.TIMER, onSpawnTick);
 		}
 		
 		// -- Methods -- //
 		
-		private function onSpawnTick(e:TimerEvent):void 
+		override protected function applyUpgrade():void 
 		{
-			// Create unit
-			var newUnit:Unit = _unitFactory.create(UnitFactory.MINION, ParentEngine);
-			newUnit.Position = Position;
+			if (_art) removeChild(_art);
 			
-			// Add to array
-			var arrInd:int = _minions.push(newUnit);
-			newUnit.addEventListener(GameObj.DESTROYED, function():void 
+			switch (_upgradeLevel) 
 			{
-				_minions.splice(arrInd, 1);
-				checkForRespawn();
-			});
-			
-			newUnit.start();
-			
-			checkForRespawn();
-		}
-		
-		private function checkForRespawn():void 
-		{
-			if (_destroyed) return;
-			if (!_spawnTimer.running && _minions.length < MaxMinions)
-			{
-				_spawnTimer.reset();
-				_spawnTimer.start();
+				case 0:
+					_art = new Art_Barrack1();
+					_spawnUnitIndex = UnitFactory.ALLY_FARMER;
+					SpawnInterval = 8000;
+				break;
+				case 1:
+					_art = new Art_Barrack2();
+					_spawnUnitIndex = UnitFactory.ALLY_KNIGHT;
+					SpawnInterval = 10000;
+				break;
+				case 2:
+					_art = new Art_Barrack3();
+					_spawnUnitIndex = UnitFactory.ALLY_PALADIN;
+					SpawnInterval = 12000;
+				break;
+				default:
 			}
+			
+			addChild(_art);
+			
+			// Reposition healthBar
+			_healthBar.y = -height - _healthBar.height / 2;
 		}
 		
-		override public function start(e:Event = null):void 
+		override public function upgrade(e:Event = null):void 
 		{
-			super.start(e);
-			_spawnTimer.start();
+			if (UserStats.Money < MONEY_COST) return;
+			UserStats.Money -= MONEY_COST;
+			super.upgrade(e);
 		}
-		
-		override public function stop(e:Event = null):void 
-		{
-			super.stop(e);
-			_spawnTimer.stop();
-		}
-		
-		// -- Get & Set -- //
 		
 	}
 

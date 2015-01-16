@@ -41,6 +41,7 @@ package GameObjects
 			if (!_started) return;
 			super.update();
 			
+			// Apply velocity
 			Position = Position.add(_velocity);
 		}
 		

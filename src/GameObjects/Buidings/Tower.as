@@ -3,9 +3,11 @@ package GameObjects.Buidings
 	import Factories.BuildingFactory;
 	import flash.display.MovieClip;
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	import GameObjects.Units.Enemies.Enemy;
 	import GameObjects.GameObj;
-	import GameObjects.Units.Minion;
+	import GameObjects.Units.Allies.Ally_Farmer;
+	import UI.InGame.TowerEditMenu;
 	
 	/**
 	 * ...
@@ -18,28 +20,36 @@ package GameObjects.Buidings
 		// -- Vars -- //
 		
 		private var _buildingFactory:BuildingFactory;
-		private var _upgradeLevel:uint = 0;
-		private var _maxUpgrade:uint = 3;
+		
+		// Upgrades
+		protected var _upgradeLevel:uint = 0;
+		protected var _maxUpgrade:uint = 3;
+		
+		// Upgrade Menu
+		private var _menuOpen:Boolean = false;
+		private var _editMenu:TowerEditMenu;
 		
 		// -- Construct -- //
 		
-		public function Tower(art:MovieClip, health:Number) 
+		public function Tower(health:Number) 
 		{
-			super(art, health);
+			super(null, health);
+			
+			applyUpgrade();
+			
+			_buildingFactory = new BuildingFactory();
+			
+			_editMenu = new TowerEditMenu();
+			_editMenu.y = -200;
+			_editMenu.addEventListener(TowerEditMenu.UPGRADE_CLICK, upgrade);
+			_editMenu.addEventListener(TowerEditMenu.REPAIR_CLICK, repair);
+			_editMenu.addEventListener(TowerEditMenu.DESTROY_CLICK, destroy);
 			
 			Human.addEventListener(Humanoid.DIED, destroy);
-			_buildingFactory = new BuildingFactory();
+			addEventListener(MouseEvent.CLICK, onMouseClick);
 		}
 		
 		// -- Methods -- //
-		
-		public function Upgrade():void
-		{
-			if (_upgradeLevel < _maxUpgrade)
-			{
-				_upgradeLevel++;
-			}
-		}
 		
 		override public function destroy(e:Event = null):void 
 		{
@@ -47,8 +57,53 @@ package GameObjects.Buidings
 			newBase.Position = Position;
 			newBase.start();
 			
+			removeEventListener(MouseEvent.CLICK, onMouseClick);
+			
 			stop();
 			super.destroy(e);
+		}
+		
+		public function upgrade(e:Event = null):void
+		{
+			if (_upgradeLevel < _maxUpgrade)
+			{
+				_upgradeLevel++;
+				applyUpgrade();
+			}
+		}
+		
+		private function repair(e:Event):void 
+		{
+			if (Human.Health < Human.MaxHealth)
+			{
+				// Start repair
+			}
+		}
+		
+		protected function applyUpgrade():void 
+		{
+		}
+		
+		private function onMouseClick(e:MouseEvent):void 
+		{
+			if (_menuOpen) hideMenu();
+			else showMenu();
+		}
+		
+		private function showMenu():void 
+		{
+			if (_menuOpen) return;
+			_menuOpen = true;
+			
+			addChild(_editMenu);
+		}
+		
+		private function hideMenu():void 
+		{
+			if (!_menuOpen) return;
+			_menuOpen = false;
+			
+			removeChild(_editMenu);
 		}
 		
 		// -- Get & Set -- //

@@ -4,15 +4,15 @@
 | -- TODO -- |
 
 - Minimap
-- Multiple Enemies
-- Multiple Towers
 - Builder Man
 - Repair Man
-- Parallax Scrolling
 - Environment (clouds, etc)
 
 | -- Done -- |
 
+- Archer tower
+- Archer
+- Archer AI
 - Improve GameObj structure (start required)
 - Enemy Spawner
 - BarrackTower

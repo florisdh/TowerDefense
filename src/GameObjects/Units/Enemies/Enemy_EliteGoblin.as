@@ -16,7 +16,7 @@ package GameObjects.Units.Enemies
 		
 		public function Enemy_EliteGoblin() 
 		{
-			super(new Art_EliteGoblin(), 100);
+			super(new Art_Elitegoblin(), 100);
 			AttackDamage = 8;
 			AttackInterval = 3000;
 			
@@ -28,7 +28,7 @@ package GameObjects.Units.Enemies
 			_anim_death_begin = 125;
 			_anim_death_end = 167;
 			
-			_attackRange = 100;
+			_attackRange = 30;
 		}
 		
 		// -- Methods -- //

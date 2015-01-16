@@ -1,7 +1,6 @@
 package GameObjects.Units.Enemies 
 {
 	import GameObjects.Buidings.Tower;
-	import GameObjects.Units.Minion;
 	/**
 	 * ...
 	 * @author FDH
@@ -16,9 +15,9 @@ package GameObjects.Units.Enemies
 		
 		public function Enemy_BeastRider() 
 		{
-			super(new Art_Beastrider(), 100);
-			AttackDamage = 15;
-			AttackInterval = 1500;
+			super(new Art_Beastrider(), 200);
+			AttackDamage = 25;
+			AttackInterval = 2500;
 			
 			// Anim frames
 			_anim_walk_begin = 55;

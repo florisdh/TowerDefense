@@ -84,6 +84,7 @@ package
 			var l:int = _gameObjs.length;
 			for (var i:int = l - 1; i >= 0; i-- )
 			{
+				if (!_started) return;
 				_gameObjs[i].update();
 			}
 			

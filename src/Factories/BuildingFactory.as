@@ -1,7 +1,10 @@
 package Factories 
 {
+	import GameObjects.Buidings.ArcheryTower;
 	import GameObjects.Buidings.BarrackTower;
+	import GameObjects.Buidings.BarricadeTower;
 	import GameObjects.Buidings.Building;
+	import GameObjects.Buidings.Castle;
 	import GameObjects.Buidings.RangedTower;
 	import GameObjects.Buidings.TowerBase;
 	import GameObjects.GameObj;
@@ -15,9 +18,10 @@ package Factories
 		
 		public static const CASTLE:int = 0;
 		public static const TOWER_BASE:int = 1;
-		public static const TOWER_SPAWN:int = 2;
-		public static const TOWER_SHOOT:int = 3;
-		public static const TOWER_BLOCK:int = 4;
+		public static const TOWER_BARRACK:int = 2;
+		public static const TOWER_ARCHERY:int = 3;
+		public static const TOWER_SHOOT:int = 4;
+		public static const TOWER_BARRICADE:int = 5;
 		
 		// -- Methods -- //
 		
@@ -28,23 +32,29 @@ package Factories
 			switch (type)
 			{
 				case CASTLE:
-					newBuilding = new Building(new TempArt_Castle1(), 1000);
+					newBuilding = new Castle();
 				break;
 				case TOWER_BASE:
 					newBuilding = new TowerBase();
 				break;
-				case TOWER_SPAWN:
+				case TOWER_BARRACK:
 					newBuilding = new BarrackTower();
 				break;
 				case TOWER_SHOOT:
 					newBuilding = new RangedTower();
+				break;
+				case TOWER_BARRICADE:
+					newBuilding = new BarricadeTower();
+				break;
+				case TOWER_ARCHERY:
+					newBuilding = new ArcheryTower();
 				break;
 				default:
 					return null;
 				break;
 			}
 			
-			engine.addObject(newBuilding, 5);
+			engine.addObject(newBuilding, 10);
 			return newBuilding;
 		}
 		

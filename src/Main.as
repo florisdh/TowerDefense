@@ -5,6 +5,7 @@ package
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
 	import Tools.Input;
+	import UI.Menus.DeathMenu;
 	import UI.Menus.Menu;
 	import UI.Menus.StartMenu;
 	
@@ -50,7 +51,6 @@ package
 			// Create game
 			_game = new Game();
 			_game.addEventListener(Game.FAILED, onFailed);
-			_game.addEventListener(Game.SUCCEED, onSucceed);
 			
 			showStartMenu();
 			
@@ -58,16 +58,10 @@ package
 			stage.addEventListener(Event.ENTER_FRAME, update);
 		}
 		
-		private function onSucceed(e:Event):void 
-		{
-			stop();
-			showStartMenu();
-		}
-		
 		private function onFailed(e:Event):void 
 		{
 			stop();
-			showStartMenu();
+			showDeathMenu();
 		}
 		
 		private function update(e:Event):void 
@@ -99,6 +93,15 @@ package
 			
 			_menu = new StartMenu();
 			_menu.addEventListener(StartMenu.START, start);
+			addChild(_menu);
+		}
+		
+		private function showDeathMenu(e:Event = null):void
+		{
+			hideMenu();
+			
+			_menu = new DeathMenu();
+			_menu.addEventListener(DeathMenu.CONTINUE, showStartMenu);
 			addChild(_menu);
 		}
 		

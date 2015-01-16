@@ -29,12 +29,14 @@ package UI.InGame
 		{
 			super();
 			
-			_bg = new TempArt_TowerMenu();
-			//_bg.y = -_bg.height / 2;
+			//_bg = new TempArt_TowerMenu();
+			_bg = new Art_Banner();
 			addChild(_bg);
 			
-			addSpriteButton(new TempArt_Tower1_Icon(), -width / 4, -height / 6 * 5);
-			addSpriteButton(new TempArt_Tower1_Icon(), width / 4, -height / 6 * 5);
+			addButton(new Art_BarrackButton(), -50, -315);
+			addButton(new Art_Archerbarracksbutton(), 50, -315);
+			addButton(new Art_RangedtowerButton(), -50, -215);
+			addButton(new Art_Barricadebutton(), 50, -215);
 			
 			addEventListener(MouseEvent.CLICK, onButtonClick);
 		}
@@ -43,7 +45,7 @@ package UI.InGame
 		
 		private function onButtonClick(e:Event):void 
 		{
-			var arrInd:int = _spriteButtons.indexOf(e.target);
+			var arrInd:int = _buttons.indexOf(e.target);
 			_selectedTowerIndex = arrInd;
 			
 			if (_selectedTowerIndex != -1)

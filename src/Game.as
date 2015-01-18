@@ -5,6 +5,8 @@ package
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
 	import flash.geom.Vector3D;
+	import flash.media.Sound;
+	import flash.media.SoundTransform;
 	import flash.utils.Timer;
 	import Levels.Level;
 	import UI.InGame.CountDownIndicator;
@@ -35,6 +37,8 @@ package
 		// State
 		private var _started:Boolean = false;
 		
+		private var _sound:Sound;
+		
 		// UI
 		
 		// -- Construct -- //
@@ -56,6 +60,10 @@ package
 			_camera.MinX = 0;
 			_camera.MaxX = _level.LevelWidth - Main.WINDOW_WIDTH;
 			_camera.Position = new Vector3D(_camera.MaxX);
+			
+			// Play sound track
+			_sound = new Audio_Soundtrack();
+			_sound.play(0, 999, new SoundTransform(1));
 			
 			// GUI
 			

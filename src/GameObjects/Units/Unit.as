@@ -38,6 +38,12 @@ package GameObjects.Units {
 		protected var _canAttack:Boolean = true;
 		private var _attackTimer:Timer;
 		
+		// Target x direction of unit
+		protected var _targetDir:int;
+		
+		//
+		protected var _autoMove:Boolean = true;
+		
 		// Hit effect timer
 		private var _hitTimer:Timer;
 		
@@ -57,6 +63,11 @@ package GameObjects.Units {
 		public function Unit(art:MovieClip, health:Number) 
 		{
 			super(art);
+			
+			mouseEnabled = false;
+			mouseChildren = false;
+			
+			MoveDir = _targetDir;
 			
 			Human = new Humanoid(health); 
 			Human.addEventListener(Humanoid.CHANGED, onHit);
@@ -165,15 +176,15 @@ package GameObjects.Units {
 				if (_closestTarget)
 				{
 					// Stop walking
-					_velocity.scaleBy(0);
+					MoveDir = 0;
 					
 					// Attack
 					if (_canAttack) attack(_closestTarget);
 				}
-				else if (!Human.Died)
+				else if (!Human.Died && _autoMove)
 				{
 					// Walk
-					_velocity = new Vector3D(MoveDir * MoveSpeed);
+					MoveDir = _targetDir;
 				}
 			}
 			

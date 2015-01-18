@@ -15,7 +15,6 @@ package UI.InGame
 		// -- Events -- //
 		
 		public static const UPGRADE_CLICK:String = "UPGRADE_CLICK";
-		public static const REPAIR_CLICK:String = "REPAIR_CLICK";
 		public static const DESTROY_CLICK:String = "DESTROY_CLICK";
 		
 		// -- Properties -- //
@@ -34,8 +33,7 @@ package UI.InGame
 			addChild(_bg);
 			
 			addButton(new Art_BuildButton(), -50, -315);
-			addButton(new Art_BuildButton(), 50, -315);
-			addButton(new Art_RangedtowerButton(), -50, -215);
+			addButton(new Art_DeleteButton(), 50, -315);
 			
 			addEventListener(MouseEvent.CLICK, onButtonClick);
 		}
@@ -52,9 +50,6 @@ package UI.InGame
 					dispatchEvent(new Event(UPGRADE_CLICK));
 				break;
 				case 1:
-					dispatchEvent(new Event(REPAIR_CLICK));
-				break;
-				case 2:
 					dispatchEvent(new Event(DESTROY_CLICK));
 				break;
 				default:

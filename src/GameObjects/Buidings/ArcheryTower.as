@@ -19,6 +19,7 @@ package GameObjects.Buidings
 		{
 			super(300, 12000);
 			_maxUpgrade = 2;
+			MaxUnits = 2;
 		}
 		
 		// -- Methods -- //
@@ -30,11 +31,11 @@ package GameObjects.Buidings
 			switch (_upgradeLevel) 
 			{
 				case 0:
-					_art = new Art_Archery1();
+					_art = new Art_Archery_1();
 				_spawnUnitIndex = UnitFactory.ALLY_ARCHER;
 				break;
 				case 1:
-					_art = new Art_Archery2();
+					_art = new Art_Archery_2();
 				_spawnUnitIndex = UnitFactory.ALLY_BUFFEDARCHER;
 				break;
 				default:

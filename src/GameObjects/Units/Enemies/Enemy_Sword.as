@@ -17,7 +17,7 @@ package GameObjects.Units.Enemies
 		public function Enemy_Sword() 
 		{
 			super(new Art_OrcSwordman(), 150);
-			AttackDamage = 15;
+			AttackDamage = 10;
 			AttackInterval = 1250;
 			
 			// Attack types

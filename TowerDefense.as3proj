@@ -75,12 +75,12 @@
     <element path="art\Audio_Audiofiles.swc" />
     <element path="art\Art_UI.swc" />
     <element path="art\Art_Eindscherm.swc" />
-    <element path="art\Art_Archery.swc" />
     <element path="art\Art_Castle.swc" />
     <element path="art\Art_Walls.swc" />
     <element path="art\Art_Buildplatvorm.swc" />
     <element path="art\Art_Barracks.swc" />
     <element path="art\Art_Archers.swc" />
+    <element path="art\Art_Archery.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

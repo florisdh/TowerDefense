@@ -16,9 +16,9 @@ package GameObjects.Units.Enemies
 		
 		public function Enemy_Ram() 
 		{
-			super(new Art_Ogre(), 300);
-			AttackDamage = 70;
-			AttackInterval = 5000;
+			super(new Art_Ogre(), 350);
+			AttackDamage = 90;
+			AttackInterval = 6000;
 			
 			// Anim frames
 			_anim_idle_begin = 0;

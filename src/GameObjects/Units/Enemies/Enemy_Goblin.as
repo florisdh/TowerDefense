@@ -17,7 +17,7 @@ package GameObjects.Units.Enemies
 		public function Enemy_Goblin() 
 		{
 			super(new Art_Goblin(), 100);
-			AttackDamage = 5;
+			AttackDamage = 15;
 			AttackInterval = 3500;
 			
 			// Anim frames

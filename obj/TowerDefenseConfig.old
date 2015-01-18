@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'18-1-2015'</value>
+      <value>'19-1-2015'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -59,12 +59,12 @@
       <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Audio_Audiofiles.swc</path-element>
       <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_UI.swc</path-element>
       <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Eindscherm.swc</path-element>
-      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Archery.swc</path-element>
       <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Castle.swc</path-element>
       <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Walls.swc</path-element>
       <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Buildplatvorm.swc</path-element>
       <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Barracks.swc</path-element>
       <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Archers.swc</path-element>
+      <path-element>C:\Users\FDH\Documents\School\2014-2015\Projects\TowerDefense\art\Art_Archery.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>

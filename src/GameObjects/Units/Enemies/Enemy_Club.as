@@ -21,7 +21,7 @@ package GameObjects.Units.Enemies {
 		public function Enemy_Club() 
 		{
 			super(new Art_OrcKnuppelman(), 150);
-			AttackDamage = 15;
+			AttackDamage = 5;
 			AttackInterval = 1000;
 			
 			// Anim frames

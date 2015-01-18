@@ -1,5 +1,7 @@
 package Factories 
 {
+	import GameObjects.Projectiles.ChickenProjectile;
+	import GameObjects.Projectiles.EggProjectile;
 	import GameObjects.Projectiles.Projectile;
 	/**
 	 * ...
@@ -21,10 +23,10 @@ package Factories
 			switch (type) 
 			{
 				case CHICKEN:
-					newProjectile = new Projectile(new Kip1_ART(), 30, 60);
+					newProjectile = new ChickenProjectile();
 				break;
 				case EGG:
-					newProjectile = new Projectile(new EI_ART(), 30, 30);
+					newProjectile = new EggProjectile();
 				break;
 				default:
 					return null;

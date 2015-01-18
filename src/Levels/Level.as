@@ -40,6 +40,7 @@ package Levels
 		private var _castle:Building;
 		private var _groundY:int = 700;
 		private var _moneyGainTimer:Timer;
+		private var _difficultyTimer:Timer;
 		
 		// -- Construct -- //
 		
@@ -96,16 +97,18 @@ package Levels
 			
 			// Add Enemies
 			_enemySpawner = new EnemySpawner(_engine, new Vector3D(0, _castle.y));
-			_enemySpawner.EnemyTypes = new <int> [ UnitFactory.ENEMY_SWORD, UnitFactory.ENEMY_CLUB, UnitFactory.ENEMY_BEASTRIDER, UnitFactory.ENEMY_GOBLIN, UnitFactory.ENEMY_ELITEGOBLIN, UnitFactory.ENEMY_RAM ];
-			//_enemySpawner.EnemyTypes = new <int> [ UnitFactory.ENEMY_SWORD ];
+			_enemySpawner.EnemyTypes = new <int> [ UnitFactory.ENEMY_SWORD ];
 			_enemySpawner.MaxEnemies = 5;
 			_enemySpawner.MinSpawnAmount = 1;
 			_enemySpawner.MaxSpawnAmount = 2;
-			_enemySpawner.SpawnInterval = 3000;
+			_enemySpawner.SpawnInterval = 5000;
 			
+			// Money gain over time
 			_moneyGainTimer = new Timer(400);
 			_moneyGainTimer.addEventListener(TimerEvent.TIMER, gainMoneyTick);
 			
+			_difficultyTimer = new Timer(10000);
+			_difficultyTimer.addEventListener(TimerEvent.TIMER, onDifficultyTick);
 		}
 		
 		public function destroy():void 
@@ -116,6 +119,37 @@ package Levels
 		private function onCastleDestroyed(e:Event):void 
 		{
 			dispatchEvent(new Event(FAILED));
+		}
+		
+		private function onDifficultyTick(e:TimerEvent):void 
+		{
+			switch (_difficultyTimer.currentCount) 
+			{
+				case 1:
+					_enemySpawner.EnemyTypes.push(UnitFactory.ENEMY_CLUB);
+				break;
+				case 4:
+					_enemySpawner.EnemyTypes.push(UnitFactory.ENEMY_BEASTRIDER);
+					_enemySpawner.SpawnInterval = 4000;
+				break;
+				case 7:
+					_enemySpawner.EnemyTypes.push(UnitFactory.ENEMY_GOBLIN);
+				break;
+				case 10:
+					_enemySpawner.EnemyTypes.push(UnitFactory.ENEMY_ELITEGOBLIN);
+					_enemySpawner.SpawnInterval = 3000;
+				break;
+				case 13:
+					_enemySpawner.EnemyTypes.push(UnitFactory.ENEMY_RAM);
+				break;
+				case 16:
+					_enemySpawner.SpawnInterval = 3000;
+				break;
+				case 19:
+					_enemySpawner.SpawnInterval = 2000;
+				break;
+				default:
+			}
 		}
 		
 		private function gainMoneyTick(e:TimerEvent):void 
@@ -130,6 +164,7 @@ package Levels
 			
 			_engine.start();
 			_enemySpawner.start();
+			_difficultyTimer.start();
 			_moneyGainTimer.start();
 		}
 		
@@ -140,6 +175,7 @@ package Levels
 			
 			_moneyGainTimer.stop();
 			_enemySpawner.stop();
+			_difficultyTimer.stop();
 			_engine.stop();
 		}
 		
@@ -148,12 +184,12 @@ package Levels
 			if (!_started) return;
 			
 			// Calc frontLine for ally units
-			var newFrontLine:int = LevelWidth;
+			var newFrontLine:int = _castle.x - _castle.width / 2;
 			for each (var c:GameObj in _engine.Items)
 			{
-				if (c is Tower && c.x < newFrontLine) newFrontLine = c.x;
+				if (c is Tower && c.x < newFrontLine) newFrontLine = c.x - c.width / 2;
 			}
-			_allyFrontLine = newFrontLine - 200;
+			_allyFrontLine = newFrontLine - 30;
 			
 			// Set frontline for all allies
 			for each (var c:GameObj in _engine.Items)

@@ -21,12 +21,12 @@ package GameObjects.Units.Allies
 		
 		public function Ally(art:MovieClip, health:Number) 
 		{
+			_targetDir = -1;
 			super(art, health);
+			_autoMove = false;
 			
 			// Attack types
 			_attackTypes.push(Enemy);
-			
-			MoveDir = -1;
 		}
 		
 		// -- Methods -- //

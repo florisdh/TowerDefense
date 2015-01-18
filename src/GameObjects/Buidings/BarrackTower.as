@@ -19,7 +19,7 @@ package GameObjects.Buidings
 		public function BarrackTower() 
 		{
 			super(300, 8000);
-			
+			MaxUnits = 3;
 		}
 		
 		// -- Methods -- //

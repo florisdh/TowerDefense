@@ -4,6 +4,8 @@ package GameObjects.Buidings
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.media.Sound;
+	import flash.media.SoundTransform;
 	import GameObjects.Units.Enemies.Enemy;
 	import GameObjects.GameObj;
 	import GameObjects.Units.Allies.Ally_Farmer;
@@ -42,7 +44,6 @@ package GameObjects.Buidings
 			_editMenu = new TowerEditMenu();
 			_editMenu.y = -200;
 			_editMenu.addEventListener(TowerEditMenu.UPGRADE_CLICK, upgrade);
-			_editMenu.addEventListener(TowerEditMenu.REPAIR_CLICK, repair);
 			_editMenu.addEventListener(TowerEditMenu.DESTROY_CLICK, destroy);
 			
 			Human.addEventListener(Humanoid.DIED, destroy);
@@ -59,6 +60,10 @@ package GameObjects.Buidings
 			
 			removeEventListener(MouseEvent.CLICK, onMouseClick);
 			
+			// Play sound
+			var sound:Sound = new Audio_Towercollapse();
+			sound.play(0, 0, new SoundTransform(1));
+			
 			stop();
 			super.destroy(e);
 		}
@@ -69,14 +74,6 @@ package GameObjects.Buidings
 			{
 				_upgradeLevel++;
 				applyUpgrade();
-			}
-		}
-		
-		private function repair(e:Event):void 
-		{
-			if (Human.Health < Human.MaxHealth)
-			{
-				// Start repair
 			}
 		}
 		

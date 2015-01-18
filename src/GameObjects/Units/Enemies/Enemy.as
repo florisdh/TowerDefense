@@ -27,10 +27,11 @@ package GameObjects.Units.Enemies {
 		
 		public function Enemy(art:MovieClip, health:Number)
 		{
-			MoveDir = 1;
 			super(art, health);
 			
 			Human.addEventListener(Humanoid.DIED, onDied);
+			
+			MoveDir = 1;
 			
 			// Attack types
 			_attackTypes.push(Ally);

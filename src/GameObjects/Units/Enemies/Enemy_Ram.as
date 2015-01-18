@@ -21,6 +21,8 @@ package GameObjects.Units.Enemies
 			AttackInterval = 5000;
 			
 			// Anim frames
+			_anim_idle_begin = 0;
+			_anim_idle_end = 31;
 			_anim_walk_begin = 35;
 			_anim_walk_end = 87;
 			_anim_attack_begin = 90;

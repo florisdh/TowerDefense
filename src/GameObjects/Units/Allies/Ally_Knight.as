@@ -23,6 +23,8 @@ package GameObjects.Units.Allies
 			AttackInterval = 1200;
 			
 			// Anim frames
+			_anim_idle_begin = 0;
+			_anim_idle_end = 30;
 			_anim_walk_begin = 35;
 			_anim_walk_end = 60;
 			_anim_attack_begin = 65;

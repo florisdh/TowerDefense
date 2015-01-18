@@ -9,8 +9,10 @@ package Levels
 	import flash.geom.Vector3D;
 	import flash.utils.Timer;
 	import GameObjects.Buidings.Building;
+	import GameObjects.Buidings.Tower;
 	import GameObjects.Buidings.TowerBase;
 	import GameObjects.GameObj;
+	import GameObjects.Units.Allies.Ally;
 	import Tools.Input;
 	import UI.InGame.CountDownIndicator;
 	
@@ -34,6 +36,7 @@ package Levels
 		private var _engine:Engine;
 		private var _buildingFactory:BuildingFactory;
 		private var _enemySpawner:EnemySpawner;
+		private var _allyFrontLine:int;
 		private var _castle:Building;
 		private var _groundY:int = 700;
 		private var _moneyGainTimer:Timer;
@@ -143,6 +146,20 @@ package Levels
 		public function update(e:Event = null):void 
 		{
 			if (!_started) return;
+			
+			// Calc frontLine for ally units
+			var newFrontLine:int = LevelWidth;
+			for each (var c:GameObj in _engine.Items)
+			{
+				if (c is Tower && c.x < newFrontLine) newFrontLine = c.x;
+			}
+			_allyFrontLine = newFrontLine - 200;
+			
+			// Set frontline for all allies
+			for each (var c:GameObj in _engine.Items)
+			{
+				if (c is Ally) (c as Ally).FrontLineX = _allyFrontLine;
+			}
 			
 			_engine.update();
 		}

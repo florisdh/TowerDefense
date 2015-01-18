@@ -25,6 +25,8 @@ package GameObjects.Units.Enemies
 			_attackTypes.push(Tower);
 			
 			// Anim frames
+			_anim_idle_begin = 0;
+			_anim_idle_end = 35;
 			_anim_walk_begin = 0;
 			_anim_walk_end = 34;
 			_anim_attack_begin = 40;

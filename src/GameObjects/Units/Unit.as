@@ -20,7 +20,6 @@ package GameObjects.Units {
 		public var Human:Humanoid;
 		public var AttackDamage:Number = 10;
 		public var MoveSpeed:Number = 4;
-		public var MoveDir:int;
 		
 		// -- Vars -- //
 		
@@ -44,6 +43,8 @@ package GameObjects.Units {
 		
 		// Anim frames
 		private var _deathAnimStarted:Boolean = false;
+		protected var _anim_idle_begin:int;
+		protected var _anim_idle_end:int;
 		protected var _anim_walk_begin:int;
 		protected var _anim_walk_end:int;
 		protected var _anim_attack_begin:int;
@@ -71,8 +72,6 @@ package GameObjects.Units {
 			
 			_hitTimer = new Timer(500, 1);
 			_hitTimer.addEventListener(TimerEvent.TIMER, onHitDone);
-			
-			_velocity = new Vector3D(MoveDir * MoveSpeed);
 		}
 		
 		// -- Methods -- //
@@ -124,6 +123,7 @@ package GameObjects.Units {
 			
 			super.update(e);
 			
+			// Find Closest Target
 			if (!Human.Died)
 			{
 				// Find closest target to attack
@@ -177,7 +177,9 @@ package GameObjects.Units {
 				}
 			}
 			
-			// Animations
+			// Animations //
+			
+			var cFrame:int = _art.currentFrame;
 			
 			// Death
 			if (Human.Died)
@@ -187,7 +189,7 @@ package GameObjects.Units {
 					_deathAnimStarted = true;
 					_art.gotoAndPlay(_anim_death_begin);
 				}
-				else if (_art.currentFrame >= _anim_death_end || _art.currentFrame < _anim_death_begin)
+				else if (cFrame >= _anim_death_end || cFrame < _anim_death_begin)
 				{
 					destroy();
 				}
@@ -196,18 +198,27 @@ package GameObjects.Units {
 			// Attack
 			else if (_closestTarget)
 			{
-				if (_art.currentFrame >= _anim_attack_end)
+				if (cFrame >= _anim_attack_end)
 				{
 					_art.stop();
 				}
 			}
 			
 			// Walk
-			else
+			else if (MoveDir != 0)
 			{
-				if (_art.currentFrame < _anim_walk_begin || _art.currentFrame >= _anim_walk_end)
+				if (cFrame < _anim_walk_begin || cFrame >= _anim_walk_end)
 				{
 					_art.gotoAndPlay(_anim_walk_begin);
+				}
+			}
+			
+			// Idle
+			else
+			{
+				if (cFrame < _anim_idle_begin || cFrame > _anim_idle_end)
+				{
+					_art.gotoAndPlay(_anim_idle_begin);
 				}
 			}
 		}
@@ -225,6 +236,22 @@ package GameObjects.Units {
 		}
 		
 		// -- Get & Set -- //
+		
+		public function set MoveDir(newVal:int):void 
+		{
+			// Set max en min to 1 and -1
+			newVal = Math.max( -1, Math.min(1, newVal));
+			
+			// Set velocity
+			_velocity.x = newVal * MoveSpeed;
+		}
+		
+		public function get MoveDir():int
+		{
+			// Converts xVelocity in to a unit direction (-1 or 0 or 1)
+			var xVelo:int = _velocity.x;
+			return xVelo / Math.abs(xVelo);
+		}
 		
 		public function get AttackInterval():int
 		{

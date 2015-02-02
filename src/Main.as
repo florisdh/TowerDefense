@@ -6,6 +6,7 @@ package
 	import flash.events.KeyboardEvent;
 	import Tools.Input;
 	import UI.Menus.DeathMenu;
+	import UI.Menus.LoadMenu;
 	import UI.Menus.Menu;
 	import UI.Menus.StartMenu;
 	
@@ -18,8 +19,8 @@ package
 		// -- Statics -- //
 		
 		// For those who want to know the size and are not added yet.
-		public static var WINDOW_WIDTH:int;
-		public static var WINDOW_HEIGHT:int;
+		public static var Window_Width:int;
+		public static var Window_Height:int;
 		
 		// -- Properties -- //
 		
@@ -43,8 +44,8 @@ package
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
 			
-			WINDOW_WIDTH = stage.stageWidth;
-			WINDOW_HEIGHT = stage.stageHeight;
+			Window_Width = stage.stageWidth;
+			Window_Height = stage.stageHeight;
 			
 			Input.setStage(stage);
 			
@@ -52,7 +53,7 @@ package
 			_game = new Game();
 			_game.addEventListener(Game.FAILED, onFailed);
 			
-			showStartMenu();
+			showLoadMenu();
 			
 			// Event listeners
 			stage.addEventListener(Event.ENTER_FRAME, update);
@@ -66,14 +67,16 @@ package
 		
 		private function update(e:Event):void 
 		{
-			_game.update();
+			if (_game && _game.Started) _game.update();
 		}
 		
 		public function start(e:Event = null):void 
 		{
 			if (_game.Started) return;
 			
-			hideMenu();
+			closeMenu();
+			
+			UserStats.Money = 200;
 			
 			addChild(_game);
 			_game.start();
@@ -87,9 +90,18 @@ package
 			removeChild(_game);
 		}
 		
+		private function showLoadMenu(e:Event = null):void 
+		{
+			closeMenu();
+			
+			_menu = new LoadMenu();
+			_menu.addEventListener(LoadMenu.LOADED, showStartMenu);
+			addChild(_menu);
+		}
+		
 		private function showStartMenu(e:Event = null):void 
 		{
-			hideMenu();
+			closeMenu();
 			
 			_menu = new StartMenu();
 			_menu.addEventListener(StartMenu.START, start);
@@ -98,14 +110,14 @@ package
 		
 		private function showDeathMenu(e:Event = null):void
 		{
-			hideMenu();
+			closeMenu();
 			
 			_menu = new DeathMenu();
 			_menu.addEventListener(DeathMenu.CONTINUE, showStartMenu);
 			addChild(_menu);
 		}
 		
-		private function hideMenu(e:Event = null):void 
+		private function closeMenu(e:Event = null):void 
 		{
 			if (_menu)
 			{

@@ -52,7 +52,7 @@ package GameObjects.Buidings
 		
 		override public function upgrade(e:Event = null):void 
 		{
-			if (UserStats.Money < MONEY_COST) return;
+			if (UserStats.Money < MONEY_COST && _upgradeLevel < _maxUpgrade) return;
 			UserStats.Money -= MONEY_COST;
 			super.upgrade(e);
 		}

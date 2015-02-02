@@ -10,7 +10,7 @@ package UI.Menus
 	{
 		// -- Events -- //
 		
-		public static const CONTINUE:String = "Continue";
+		public static const CONTINUE:String = "CONTINUE";
 		
 		// -- Vars -- //
 		

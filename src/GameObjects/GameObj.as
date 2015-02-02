@@ -14,7 +14,7 @@ package GameObjects
 	{
 		// -- Events -- //
 		
-		public static const DESTROYED:String = "Destroyed";
+		public static const DESTROYED:String = "DESTROYED";
 		
 		// -- Properties -- //
 		

@@ -13,8 +13,8 @@ package UI.InGame
 	{
 		// -- Events -- //
 		
-		public static const SECLECTED_TOWER:String = "SelectedTower";
-		private static const BUTTON_CLICK:String = "btClick";
+		public static const SECLECTED_TOWER:String = "SELECTED_TOWER";
+		private static const BUTTON_CLICK:String = "BUTTON_CLICK";
 		
 		// -- Properties -- //
 		

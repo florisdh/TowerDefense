@@ -46,14 +46,14 @@ package
 			var screenMouseX:int = _game.mouseX + _game.x;
 			
 			// Movement
-			if (Input.keyDown(LeftKey) || screenMouseX < Main.WINDOW_WIDTH * MouseMoveArea)
+			if (Input.keyDown(LeftKey) || screenMouseX < Main.Window_Width * MouseMoveArea)
 			{
 				// Accelerate
 				if (_velo.x > -MoveSpeed) _velo.x -= Acceleration;
 				// Hold
 				else if (_velo.x < -MoveSpeed) _velo.x = -MoveSpeed;
 			}
-			else if (Input.keyDown(RightKey) || screenMouseX > Main.WINDOW_WIDTH * (1 - MouseMoveArea))
+			else if (Input.keyDown(RightKey) || screenMouseX > Main.Window_Width * (1 - MouseMoveArea))
 			{
 				// Accelerate
 				if (_velo.x < MoveSpeed) _velo.x += Acceleration;

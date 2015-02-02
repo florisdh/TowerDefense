@@ -10,8 +10,8 @@ package
 	{
 		// -- Events -- //
 		
-		public static const DIED:String = "Died";
-		public static const CHANGED:String = "Changed";
+		public static const DIED:String = "DIED";
+		public static const CHANGED:String = "CHANGED";
 		
 		// -- Properties -- //
 		

@@ -13,7 +13,7 @@ package UI.Menus
 	{
 		// -- Events -- //
 		
-		public static const START:String = "Start";
+		public static const START:String = "START";
 		
 		// -- Vars -- //
 		
@@ -26,6 +26,8 @@ package UI.Menus
 			addChild(new Art_Startscherm());
 			addEventListener(Event.ENTER_FRAME, update);
 		}
+		
+		// -- Methods -- //
 		
 		private function update(e:Event):void 
 		{

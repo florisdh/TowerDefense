@@ -16,7 +16,7 @@ package UI.InGame
 	{
 		// -- Events -- //
 		
-		public static const DONE:String = "Done";
+		public static const DONE:String = "DONE";
 		
 		// -- Vars -- //
 		

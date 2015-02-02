@@ -20,7 +20,7 @@ package
 	{
 		// -- Events -- //
 		
-		public static const FAILED:String = "Failed";
+		public static const FAILED:String = "FAILED";
 		
 		// -- Properties -- //
 		
@@ -58,7 +58,7 @@ package
 			// Camera
 			_camera = new Camera(_level);
 			_camera.MinX = 0;
-			_camera.MaxX = _level.LevelWidth - Main.WINDOW_WIDTH;
+			_camera.MaxX = _level.LevelWidth - Main.Window_Width;
 			_camera.Position = new Vector3D(_camera.MaxX);
 			
 			// Play sound track

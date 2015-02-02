@@ -12,7 +12,7 @@ package
 	{
 		// -- Properties -- //
 		
-		public var Parent:Sprite;
+		public var ParentItem:Sprite;
 		
 		// -- Vars -- //
 		
@@ -25,7 +25,7 @@ package
 		
 		public function Engine(stage:Sprite) 
 		{
-			Parent = stage;
+			ParentItem = stage;
 			init();
 		}
 		
@@ -47,9 +47,9 @@ package
 			obj.ParentEngine = this;
 			
 			if (zInd >= 0)
-				Parent.addChildAt(obj, Math.min(zInd, Parent.numChildren));
+				ParentItem.addChildAt(obj, Math.min(zInd, ParentItem.numChildren));
 			else
-				Parent.addChild(obj);
+				ParentItem.addChild(obj);
 			
 		}
 		
@@ -70,7 +70,7 @@ package
 			if (ind < 0 || ind >= _gameObjs.length) return;
 			
 			// Remove from stage
-			Parent.removeChild(_gameObjs[ind]);
+			ParentItem.removeChild(_gameObjs[ind]);
 			
 			// Remove from array
 			_gameObjs.splice(ind, 1);
@@ -91,10 +91,10 @@ package
 			// Check for col | I used for instead of foreach becouse some where skipped
 			for (var cI:int = 0; cI < _gameObjs.length; cI++ )
 			{
-				var c:GameObj = _gameObjs[cI];
+				var current:GameObj = _gameObjs[cI];
 				
 				// Check for collision
-				if (!c.Collide) continue;
+				if (!current.Collide) continue;
 				
 				for (var oI:int = 0; oI < _gameObjs.length; oI++ )
 				{
@@ -102,14 +102,14 @@ package
 					if (cI == oI) continue;
 					
 					// Skip No colliding parts
-					var o:GameObj = _gameObjs[oI];
-					if (!o.Collide) continue;
+					var other:GameObj = _gameObjs[oI];
+					if (!other.Collide) continue;
 					
 					// Check for col
-					if (c.willCollide(o) && o.willCollide(c))
+					if (current.willCollide(other) && other.willCollide(current))
 					{
-						c.onCollide(o);
-						o.onCollide(c);
+						current.onCollide(other);
+						other.onCollide(current);
 					}
 				}
 			}
@@ -143,12 +143,14 @@ package
 		public function getItemsFromType(type:Class):Vector.<GameObj> 
 		{
 			var l:int = _gameObjs.length;
-			var rv:Vector.<GameObj> = new Vector.<GameObj>();
+			var items:Vector.<GameObj> = new Vector.<GameObj>();
+			
 			for (var i:int = 0; i < l; i++) 
 			{
-				if (_gameObjs[i] is type) rv.push(_gameObjs[i]);
+				if (_gameObjs[i] is type) items.push(_gameObjs[i]);
 			}
-			return rv;
+			
+			return items;
 		}
 		
 		// -- Get & Set -- //

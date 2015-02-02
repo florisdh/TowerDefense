@@ -24,7 +24,7 @@ package Levels
 	{
 		// -- Events -- //
 		
-		public static const FAILED:String = "Failed";
+		public static const FAILED:String = "FAILED";
 		
 		// -- Properties -- //
 		
@@ -147,6 +147,9 @@ package Levels
 				break;
 				case 19:
 					_enemySpawner.SpawnInterval = 2000;
+				break;
+				case 21:
+					_enemySpawner.MaxSpawnAmount = 4;
 				break;
 				default:
 			}
